@@ -4,13 +4,11 @@ plugins {
 
 android {
     namespace = "com.example.tenantsyse"
-    compileSdk {
-        version = release(37)
+    compileSdk = 37
 
-        buildFeatures {
-            viewBinding = true
-            dataBinding = true
-        }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
     }
 
     defaultConfig {
@@ -30,6 +28,7 @@ android {
             }
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -42,7 +41,9 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.core.ktx)
     implementation(libs.material)
+
     testImplementation(libs.junit)
+
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
 }
