@@ -11,20 +11,26 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
         val registeredEmail = intent.getStringExtra("EMAIL")
+
         if (registeredEmail != null) {
             binding.emailEditText.setText(registeredEmail)
         }
+
         binding.loginButton.setOnClickListener {
             val email = binding.emailEditText.text.toString().trim()
             val password = binding.passwordEditText.text.toString()
+
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please enter your email and password", Toast.LENGTH_SHORT)
                     .show()
                 return@setOnClickListener
             }
+
             val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("email", email)
             startActivity(intent)
             finish()
         }
