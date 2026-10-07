@@ -12,14 +12,29 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
         binding.saveButton.setOnClickListener {
+
+            if (binding.tenantNameEditText.text.toString().trim().isEmpty()) {
+                binding.tenantNameEditText.error = "Tenant name is required"
+                return@setOnClickListener
+            }
+
             val name = binding.tenantNameEditText.text.toString()
             val phone = binding.phoneEditText.text.toString()
             val rent = binding.rentEditText.text.toString()
             val tenant = Tenant(name, phone, rent)
             binding.tenant = tenant
             lastTenant = tenant
+
+            binding.tenantNameEditText.text.clear()
+            binding.phoneEditText.text.clear()
+            binding.rentEditText.text.clear()
+
         }
+
+
         binding.callButton.setOnClickListener {
             val tenant = lastTenant
             if (tenant == null) {
