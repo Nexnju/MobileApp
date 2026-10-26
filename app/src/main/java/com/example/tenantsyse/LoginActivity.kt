@@ -21,7 +21,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.loginButton.setOnClickListener {
             val email = binding.emailEditText.text.toString().trim()
-            val password = binding.passwordEditText.text.toString()
+            val password = binding.passwordEditText.text .toString()
 
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please enter your email and password", Toast.LENGTH_SHORT)
@@ -40,6 +40,7 @@ class LoginActivity : AppCompatActivity() {
         }
         binding.helpTextView.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.strathmore.edu"))
+
             startActivity(intent)
         }
 
